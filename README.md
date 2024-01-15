@@ -1,6 +1,6 @@
 # Project restaurant-api
 
-One Paragraph of project description goes here
+A simple REST API application to manage restaurants and their menus... etc.
 
 ## Getting Started
 

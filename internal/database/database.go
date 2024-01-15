@@ -14,6 +14,7 @@ import (
 
 type Service interface {
 	Health() map[string]string
+	GetDB() *mongo.Database
 }
 
 type service struct {
@@ -36,6 +37,10 @@ func New() Service {
 	return &service{
 		db: client,
 	}
+}
+
+func (s *service) GetDB() *mongo.Database {
+	return s.db.Database("restaurant")
 }
 
 func (s *service) Health() map[string]string {
