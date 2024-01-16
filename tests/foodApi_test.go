@@ -10,12 +10,12 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestHelloWorldHandler(t *testing.T) {
+func TestGetAllFoods(t *testing.T) {
 	s := &server.Server{}
 	r := gin.New()
-	r.GET("/", s.HelloWorldHandler)
+	r.GET("/food/all", s.GetFoods)
 	// Create a test HTTP request
-	req, err := http.NewRequest("GET", "/", nil)
+	req, err := http.NewRequest("GET", "/food/all", nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -23,7 +23,8 @@ func TestHelloWorldHandler(t *testing.T) {
 	rr := httptest.NewRecorder()
 	// Serve the HTTP request
 	r.ServeHTTP(rr, req)
-	// Check the status code
+
+	// Check results
 	assert.Equal(t, rr.Code, http.StatusOK)
-	assert.Equal(t, rr.Body.String(), "{\"message\":\"Hello World\"}")
+	assert.Equal(t, rr.Body.String(), "{\"message\":\"Get All Food\"}")
 }
