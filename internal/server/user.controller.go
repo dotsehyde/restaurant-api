@@ -5,10 +5,10 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-var collectionName = "users"
+var userCollection = "users"
 
 func (s *Server) GetUsers(c *gin.Context) {
-	records, err := s.db.GetDB().Collection(collectionName).Find(c, bson.M{})
+	records, err := s.db.GetDB().Collection(userCollection).Find(c, bson.M{})
 	if err != nil {
 		c.JSON(500, gin.H{
 			"error": err,
