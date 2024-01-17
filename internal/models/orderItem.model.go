@@ -18,5 +18,5 @@ type OrderItem struct {
 }
 
 func (o *OrderItem) UpdateUpdatedAt() {
-	o.UpdatedAt = time.Now()
+	o.UpdatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 }

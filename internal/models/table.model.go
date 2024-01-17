@@ -16,5 +16,5 @@ type Table struct {
 }
 
 func (t *Table) UpdateUpdatedAt() {
-	t.UpdatedAt = time.Now()
+	t.UpdatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 }

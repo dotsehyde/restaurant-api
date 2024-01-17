@@ -16,5 +16,5 @@ type Order struct {
 }
 
 func (o *Order) UpdateUpdatedAt() {
-	o.UpdatedAt = time.Now()
+	o.UpdatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 }

@@ -18,5 +18,5 @@ type Food struct {
 }
 
 func (f *Food) UpdateUpdatedAt() {
-	f.UpdatedAt = time.Now()
+	f.UpdatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 }

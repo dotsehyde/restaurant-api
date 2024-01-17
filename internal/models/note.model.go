@@ -16,5 +16,5 @@ type Note struct {
 }
 
 func (n *Note) UpdateUpdatedAt() {
-	n.UpdatedAt = time.Now()
+	n.UpdatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 }
