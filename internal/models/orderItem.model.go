@@ -8,15 +8,11 @@ import (
 
 type OrderItem struct {
 	ID          primitive.ObjectID `bson:"_id" json:"id"`
-	Quantity    string             `bson:"quantity" json:"quantity" validate:"required,eq=S|eq=M|eq=L"`
-	UnitPrice   float64            `bson:"unitPrice" json:"unitPrice"`
-	FoodID      string             `bson:"foodId" json:"foodId" validate:"required"`
+	Quantity    *string            `bson:"quantity" json:"quantity" validate:"required,eq=S|eq=M|eq=L"`
+	UnitPrice   *float64           `bson:"unitPrice" json:"unitPrice"`
+	FoodID      *string            `bson:"foodId" json:"foodId" validate:"required"`
 	OrderItemID string             `bson:"orderItemId" json:"orderItemId"`
-	OrderID     string             `bson:"orderId" json:"orderId" validate:"required"`
+	OrderID     *string            `bson:"orderId" json:"orderId" validate:"required"`
 	CreatedAt   time.Time          `bson:"createdAt" json:"createdAt"`
 	UpdatedAt   time.Time          `bson:"updatedAt" json:"updatedAt"`
-}
-
-func (o *OrderItem) UpdateUpdatedAt() {
-	o.UpdatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 }
