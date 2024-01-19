@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"restaurant-api/internal/database"
+	"restaurant-api/internal/models"
 
 	_ "github.com/joho/godotenv/autoload"
 )
@@ -23,7 +24,7 @@ func NewServer() *http.Server {
 		port: port,
 		db:   database.New(),
 	}
-
+	models.CreateIndex(NewServer.db.GetDB())
 	// Declare Server config
 	server := &http.Server{
 		Addr:         fmt.Sprintf(":%d", NewServer.port),

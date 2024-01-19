@@ -41,7 +41,7 @@ func (s *Server) GetMenus(c *gin.Context) {
 	count, err := s.db.GetDB().Collection(menuCollection).CountDocuments(ctx, bson.M{})
 
 	//convert results into []bson.M
-	var data []bson.M
+	var data []models.Menu
 	if err := res.All(ctx, &data); err != nil {
 		c.JSON(500, gin.H{
 			"message": err.Error(),
